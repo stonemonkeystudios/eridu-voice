@@ -57,9 +57,6 @@ namespace Eridu.Voice.Server
 
         private static void ConfigureResolvers() {
             // Set extensions to default resolver.
-            /*var resolver = StaticCompositeResolver.Instance.Register(
-                Magicon
-                );*/
             var resolver = MessagePack.Resolvers.CompositeResolver.Create(
                 // enable extension packages first
                 MessagePack.Unity.Extension.UnityBlitResolver.Instance,
