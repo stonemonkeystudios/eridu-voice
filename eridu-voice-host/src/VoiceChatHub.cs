@@ -14,8 +14,8 @@ namespace Eridu.Voice.Server
         IInMemoryStorage<VoiceClient> _clientStorage;
 
         public async Task SendMessageExceptSelfAsync(VoiceMessage message) {
-            Broadcast(room).OnReceivedMessage(message);
-            //BroadcastExceptSelf(room).OnReceivedMessage(message);
+            //Broadcast(room).OnReceivedMessage(message);
+            BroadcastExceptSelf(room).OnReceivedMessage(message);
             await Task.CompletedTask;
         }
 
