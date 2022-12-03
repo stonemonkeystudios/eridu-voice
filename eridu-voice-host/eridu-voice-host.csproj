@@ -12,11 +12,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="src\RoomInfo.cs" />
-    <Compile Remove="src\RoomManager.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="Grpc.AspNetCore" Version="2.46.0" />
     <PackageReference Include="MagicOnion.Server" Version="4.5.0" />
     <PackageReference Include="MagicOnion.Server.HttpGateway" Version="4.5.0" />
@@ -29,6 +24,10 @@
   <ItemGroup>
     <ProjectReference Include="..\eridu-voice-model\eridu-voice-model.csproj" Version="1.0.0.0" />
   </ItemGroup>
+
+	<ItemGroup>
+		<None Remove="..\.dockerignore" />
+	</ItemGroup>
 
   <ItemGroup>
     <Reference Include="HQDotNet.Model">
