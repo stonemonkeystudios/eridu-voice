@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: "{{ include "eridu-voice.fullname" . }}-test-connection"
+  labels:
+    {{- include "eridu-voice.labels" . | nindent 4 }}
+  annotations:
+    "helm.sh/hook": test
+spec:
+  containers:
+    - name: wget
+      image: busybox
+      command: ['wget']
+      args: ['{{ include "eridu-voice.fullname" . }}:{{ .Values.service.port }}']
+  restartPolicy: Never
