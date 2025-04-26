@@ -22,6 +22,7 @@ namespace Eridu.Voice.Server
         public async Task<VoiceClient[]> JoinAsync(string roomName, string username, int userId)
         {
             self = new VoiceClient() { Username = username, UserId = userId };
+            ClientStorage.Instance.AddClient(self.UserId, this.Context.ContextId);
 
             (room, _clientStorage) = await Group.AddAsync(roomName, self);
             Broadcast(room).OnJoin(self);
@@ -31,6 +32,7 @@ namespace Eridu.Voice.Server
         public async Task LeaveAsync()
         {
             if (room != null) {
+                ClientStorage.Instance.RemoveClient(self.UserId);
                 await (room.RemoveAsync(this.Context));
                 Broadcast(room).OnLeave(self);
             }
